@@ -3,29 +3,33 @@
     
     <!-- Configuración SEO y FAVICON -->
     <Head>
-      <Title>TorneoMix - Organiza tu torneo deportivo sin caos</Title>
-      <Meta name="description" content="La plataforma definitiva para gestionar ligas y torneos. Centraliza resultados, calendarios y equipos con TorneoMix." />
-      
-      <!-- AQUÍ ESTÁ EL CAMBIO: Vinculamos tu logo -->
+      <Title>TorneoMix - Estadísticas y control profesional para torneos</Title>
+      <Meta name="description" content="Lleva partidos, resultados y desempeño de jugadores sin hojas de Excel ni caos. Ideal para ligas universitarias y torneos locales." />
       <Link rel="icon" type="image/png" href="/logo.png" />
     </Head>
 
     <!-- NAVBAR -->
-    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 transition-all duration-300">
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 transition-all duration-300">
       <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <div class="flex items-center gap-2">
-          <!-- Si quieres que tu logo también salga aquí en la barra, descomenta la siguiente línea y borra el SVG -->
-          <!-- <img src="/logo.png" alt="Logo TorneoMix" class="w-8 h-8" /> -->
-          
-          <!-- Icono Trophy SVG (Por defecto) -->
+          <!-- Logo -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-indigo-600">
             <path fill-rule="evenodd" d="M5.166 2.621v.858c-1.035.148-2.059.33-3.071.543a.75.75 0 00-.584.859 6.753 6.753 0 006.138 5.6 6.73 6.73 0 002.743 1.346A6.707 6.707 0 019.279 15H8.54c-1.036 0-1.875.84-1.875 1.875V19.5h-.75a2.25 2.25 0 00-2.25 2.25c0 .414.336.75.75.75h15a.75.75 0 00.75-.75 2.25 2.25 0 00-2.25-2.25h-.75v-2.625c0-1.036-.84-1.875-1.875-1.875h-.739a6.706 6.706 0 01-1.112-3.173 6.73 6.73 0 002.743-1.347 6.753 6.753 0 006.139-5.6.75.75 0 00-.585-.858 47.077 47.077 0 00-3.07-.543V2.62a.75.75 0 00-.658-.744 49.22 49.22 0 00-6.093-.377c-2.063 0-4.096.128-6.093.377a.75.75 0 00-.657.744zm0 2.629c0 1.196.312 2.32.857 3.294A5.266 5.266 0 013.16 5.337a45.6 45.6 0 012.006-.348zm13.668 8.04c-.655 0-1.272-.14-1.829-.387a5.253 5.253 0 01-.583.387H9.578a5.253 5.253 0 01-.583-.387 4.514 4.514 0 01-1.829.387h-.148c.036.574.136 1.134.296 1.673A6.726 6.726 0 009.279 15H8.54c-1.036 0-1.875.84-1.875 1.875V19.5h10.67v-2.625c0-1.036-.84-1.875-1.875-1.875h-.739a6.726 6.726 0 001.99-3.027c.16-.54.26-1.1.297-1.674h-.147zM18.834 5.25c.57.092 1.133.208 1.686.347a5.266 5.266 0 01-2.863 3.214c.545-.974.857-2.098.857-3.294V5.25z" clip-rule="evenodd" />
           </svg>
           <span class="font-bold text-xl text-slate-900 tracking-tight">Torneo<span class="text-indigo-600">Mix</span></span>
         </div>
-        <a href="#contacto" class="hidden md:flex text-sm font-semibold text-slate-500 hover:text-indigo-600 transition-colors">
-          Contactar Soporte
-        </a>
+        
+         <!-- Número de WhatsApp Visible en Navbar -->
+        <div class="flex items-center gap-4">
+          <!-- Enlace directo actualizado con tu número real -->
+          <a href="https://wa.me/525532015867?text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20TorneoMix" target="_blank" class="hidden md:flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-green-600 transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <span>+52 55 3201 5867</span>
+          </a>
+          <a href="#contacto" class="text-sm font-semibold text-slate-500 hover:text-indigo-600 transition-colors">
+            Contacto Email
+          </a>
+        </div>
       </div>
     </nav>
 
@@ -36,33 +40,45 @@
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-indigo-200/30 blur-[100px] rounded-full"></div>
       </div>
 
-      <div class="max-w-5xl mx-auto px-6 text-center">
+      <div class="max-w-4xl mx-auto px-6 text-center">
         <!-- Badge -->
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-sm font-medium mb-8 animate-fade-in-up shadow-sm">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-sm font-medium mb-6 animate-fade-in-up shadow-sm">
           <span class="relative flex h-2 w-2">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
             <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
           </span>
-          Nuevo: Gestión de pagos automática
+          Nuevo: Gestión de torneos 2026
         </div>
 
-        <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tight mb-8 leading-tight">
-          Organiza tu torneo <br class="hidden md:block" />
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">sin Excel ni caos</span>
+        <!-- TÍTULO PRINCIPAL OPTIMIZADO -->
+        <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-6 leading-tight">
+          Estadísticas y control profesional <br class="hidden md:block" />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">para torneos deportivos amateur</span>
         </h1>
         
-        <p class="text-xl md:text-2xl text-slate-500 mb-10 max-w-3xl mx-auto leading-relaxed">
-          La plataforma todo en uno de <strong>TorneoMix</strong> para gestionar equipos, calendarios y resultados. 
-          Diseñado específicamente para ligas amateurs de fútbol y básquet.
+        <!-- SUBTÍTULO CLARO -->
+        <p class="text-xl md:text-2xl text-slate-500 mb-6 max-w-3xl mx-auto leading-relaxed">
+          Lleva partidos, resultados y desempeño de jugadores sin hojas de Excel ni caos.
+        </p>
+
+        <!-- MICRO-SEGMENTACIÓN -->
+        <p class="text-sm md:text-base text-indigo-600 font-medium mb-10 bg-indigo-50 inline-block px-4 py-2 rounded-lg">
+          Ideal para ligas universitarias, torneos locales y organizadores independientes.
         </p>
         
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="#contacto" class="w-full sm:w-auto px-8 py-4 bg-indigo-600 text-white rounded-full text-lg font-bold shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 hover:bg-indigo-700 transition-all hover:-translate-y-1 text-center flex items-center justify-center">
-            Empezar ahora gratis
+        <!-- CTA ÚNICO Y CLARO -->
+        <div class="flex flex-col items-center justify-center gap-4">
+          <!-- Botón CTA con enlace directo y mensaje -->
+          <a 
+            href="https://wa.me/5215512345678?text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20TorneoMix" 
+            target="_blank"
+            class="w-full sm:w-auto px-8 py-5 bg-green-600 text-white rounded-full text-xl font-bold shadow-lg shadow-green-500/30 hover:shadow-green-500/50 hover:bg-green-700 transition-all hover:-translate-y-1 text-center flex items-center justify-center gap-2"
+          >
+            <!-- Icono WhatsApp -->
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Habla con nosotros por WhatsApp
           </a>
-          <a href="#beneficios" class="w-full sm:w-auto px-8 py-4 text-slate-600 bg-white border border-slate-200 rounded-full text-lg font-medium hover:bg-slate-50 hover:border-slate-300 transition-all text-center flex items-center justify-center">
-            Ver características
-          </a>
+          <p class="text-sm text-slate-400 mt-2">Respuesta en menos de 15 minutos</p>
         </div>
       </div>
     </section>
@@ -196,7 +212,7 @@
               </div>
 
               <button type="submit" :disabled="loading" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-xl shadow-lg transition-all transform hover:-translate-y-1 flex justify-center items-center gap-2">
-                <span>{{ loading ? 'Enviando...' : 'Recibir Demo Gratuita' }}</span>
+                <span>{{ loading ? 'Enviando...' : 'Recibir Información' }}</span>
               </button>
             </form>
           </div>
