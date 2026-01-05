@@ -2,21 +2,13 @@ import { defineEventHandler, readBody, createError } from 'h3'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
-  
-  // Accedemos a la API Key. 
-  // Nota: Si el error de 'process' persiste en tu editor, puedes ignorarlo ya que Nuxt 
-  // lo reconocerá al ejecutar, o ejecutar: npm i --save-dev @types/node
   const apiKey = process.env.RESEND_API_KEY
 
-  // Validación básica
-  if (!body.email || !body.nombre) {
-    throw createError({
-      statusCode: 400,
-      statusMessage: 'Faltan datos requeridos',
-    })
+  if (!apiKey) {
+    console.error('ERROR: No se encontró la API Key de Resend')
+    return { success: false, error: 'Configuración de servidor incompleta' }
   }
 
-  // Enviar correo usando la API de Resend
   try {
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -25,23 +17,28 @@ export default defineEventHandler(async (event) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'TorneoPro <onboarding@resend.dev>', // Resend te permite usar este dominio para pruebas
-        to: ['choromosqui8@gmail.com'], // AQUÍ pones tu correo donde quieres recibir los avisos
-        subject: `Nuevo interesado: ${body.nombre}`,
+        from: 'TorneoMix <onboarding@resend.dev>',
+        to: 'torneomix@outlook.com',
+        subject: `Nuevo Lead en TorneoMix: ${body.nombre}`,
         html: `
-          <h1>Nuevo lead desde la Landing</h1>
-          <p><strong>Nombre:</strong> ${body.nombre}</p>
-          <p><strong>Torneo:</strong> ${body.tipo}</p>
-          <p><strong>WhatsApp:</strong> ${body.whatsapp}</p>
-          <p><strong>Email:</strong> ${body.email}</p>
+          <div style="font-family: sans-serif; padding: 20px; color: #333;">
+            <h2 style="color: #4f46e5;">¡Nuevo interesado en TorneoMix!</h2>
+            <p><strong>Nombre:</strong> ${body.nombre}</p>
+            <p><strong>Tipo de Torneo:</strong> ${body.tipo}</p>
+            <p><strong>WhatsApp:</strong> ${body.whatsapp}</p>
+            <p><strong>Email del cliente:</strong> ${body.email}</p>
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+            <p style="font-size: 12px; color: #666;">Enviado desde la plataforma TorneoMix.</p>
+          </div>
         `,
       }),
     })
 
     const data = await res.json()
+    if (!res.ok) throw new Error(data.message || 'Error en Resend')
+
     return { success: true, data }
   } catch (err: unknown) {
-    // Corregimos el error 'error is of type unknown' validando el tipo
     const errorMessage = err instanceof Error ? err.message : 'Error desconocido'
     return { success: false, error: errorMessage }
   }
