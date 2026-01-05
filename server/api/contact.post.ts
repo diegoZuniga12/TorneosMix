@@ -2,6 +2,8 @@ import { defineEventHandler, readBody, createError } from 'h3'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
+  
+  // Variables de entorno necesarias (Solo Resend)
   const apiKey = process.env.RESEND_API_KEY
 
   if (!apiKey) {
@@ -9,8 +11,17 @@ export default defineEventHandler(async (event) => {
     return { success: false, error: 'Configuración de servidor incompleta' }
   }
 
+  // Validación básica de datos
+  if (!body.email || !body.nombre) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: 'Faltan datos obligatorios',
+    })
+  }
+
   try {
-    const res = await fetch('https://api.resend.com/emails', {
+    // ENVIAR CORREO POR RESEND
+    const emailRes = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${apiKey}`,
@@ -34,8 +45,11 @@ export default defineEventHandler(async (event) => {
       }),
     })
 
-    const data = await res.json()
-    if (!res.ok) throw new Error(data.message || 'Error en Resend')
+    const data = await emailRes.json()
+    
+    if (!emailRes.ok) {
+      throw new Error(data.message || 'Error en Resend')
+    }
 
     return { success: true, data }
   } catch (err: unknown) {

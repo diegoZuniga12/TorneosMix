@@ -1,17 +1,23 @@
 <template>
   <div class="min-h-screen font-sans text-slate-600 bg-slate-50 selection:bg-indigo-500 selection:text-white">
     
-    <!-- Configuración SEO -->
+    <!-- Configuración SEO y FAVICON -->
     <Head>
       <Title>TorneoMix - Organiza tu torneo deportivo sin caos</Title>
       <Meta name="description" content="La plataforma definitiva para gestionar ligas y torneos. Centraliza resultados, calendarios y equipos con TorneoMix." />
+      
+      <!-- AQUÍ ESTÁ EL CAMBIO: Vinculamos tu logo -->
+      <Link rel="icon" type="image/png" href="/logo.png" />
     </Head>
 
     <!-- NAVBAR -->
     <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 transition-all duration-300">
       <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <div class="flex items-center gap-2">
-          <!-- Icono Trophy SVG -->
+          <!-- Si quieres que tu logo también salga aquí en la barra, descomenta la siguiente línea y borra el SVG -->
+          <!-- <img src="/logo.png" alt="Logo TorneoMix" class="w-8 h-8" /> -->
+          
+          <!-- Icono Trophy SVG (Por defecto) -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-indigo-600">
             <path fill-rule="evenodd" d="M5.166 2.621v.858c-1.035.148-2.059.33-3.071.543a.75.75 0 00-.584.859 6.753 6.753 0 006.138 5.6 6.73 6.73 0 002.743 1.346A6.707 6.707 0 019.279 15H8.54c-1.036 0-1.875.84-1.875 1.875V19.5h-.75a2.25 2.25 0 00-2.25 2.25c0 .414.336.75.75.75h15a.75.75 0 00.75-.75 2.25 2.25 0 00-2.25-2.25h-.75v-2.625c0-1.036-.84-1.875-1.875-1.875h-.739a6.706 6.706 0 01-1.112-3.173 6.73 6.73 0 002.743-1.347 6.753 6.753 0 006.139-5.6.75.75 0 00-.585-.858 47.077 47.077 0 00-3.07-.543V2.62a.75.75 0 00-.658-.744 49.22 49.22 0 00-6.093-.377c-2.063 0-4.096.128-6.093.377a.75.75 0 00-.657.744zm0 2.629c0 1.196.312 2.32.857 3.294A5.266 5.266 0 013.16 5.337a45.6 45.6 0 012.006-.348zm13.668 8.04c-.655 0-1.272-.14-1.829-.387a5.253 5.253 0 01-.583.387H9.578a5.253 5.253 0 01-.583-.387 4.514 4.514 0 01-1.829.387h-.148c.036.574.136 1.134.296 1.673A6.726 6.726 0 009.279 15H8.54c-1.036 0-1.875.84-1.875 1.875V19.5h10.67v-2.625c0-1.036-.84-1.875-1.875-1.875h-.739a6.726 6.726 0 001.99-3.027c.16-.54.26-1.1.297-1.674h-.147zM18.834 5.25c.57.092 1.133.208 1.686.347a5.266 5.266 0 01-2.863 3.214c.545-.974.857-2.098.857-3.294V5.25z" clip-rule="evenodd" />
           </svg>
