@@ -157,15 +157,28 @@
             </div>
           </div>
 
-          <!-- Formulario Profesional Sin NuxtUI -->
-          <div class="bg-white rounded-3xl p-8 shadow-2xl lg:p-10">
-            <div class="mb-8">
-              <h3 class="text-2xl font-bold text-slate-900">Solicitar Información</h3>
-              <p class="text-slate-500 text-sm mt-1">Sin compromiso. Respuesta en menos de 24hs.</p>
+          <!-- Formulario Profesional -->
+          <div class="bg-white rounded-3xl p-8 shadow-2xl lg:p-10 transition-all duration-300">
+            
+            <!-- Mensaje de éxito al enviar -->
+            <div v-if="success" class="text-center py-10 animate-fade-in">
+              <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+              </div>
+              <h3 class="text-2xl font-bold text-slate-900 mb-2">¡Solicitud Enviada!</h3>
+              <p class="text-slate-500 mb-6">Gracias por tu interés. Un asesor te contactará pronto.</p>
+              <button @click="success = false" class="text-indigo-600 font-semibold hover:text-indigo-800 transition-colors">
+                Enviar otra consulta
+              </button>
             </div>
 
-            <form @submit.prevent="handleSubmit" class="space-y-6">
-              
+            <!-- Formulario de entrada -->
+            <form v-else @submit.prevent="handleSubmit" class="space-y-6">
+              <div class="mb-8">
+                <h3 class="text-2xl font-bold text-slate-900">Solicitar Información</h3>
+                <p class="text-slate-500 text-sm mt-1">Sin compromiso. Respuesta en menos de 24hs.</p>
+              </div>
+
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Nombre -->
                 <div class="space-y-2">
@@ -245,7 +258,7 @@
               <div class="pt-4">
                 <button 
                   type="submit"
-                  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-indigo-500/40 hover:shadow-indigo-500/60 transition-all transform hover:-translate-y-1 flex justify-center items-center gap-2"
+                  class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-indigo-500/40 hover:shadow-indigo-500/60 transition-all transform hover:-translate-y-1 flex justify-center items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                   :disabled="loading"
                 >
                   <span v-if="!loading">Recibir Demo Gratuita</span>
@@ -284,6 +297,7 @@
 
 <script setup>
 const loading = ref(false)
+const success = ref(false)
 
 // Guardamos los SVGs directamente para no depender de librerías externas
 const features = [
@@ -328,14 +342,27 @@ const form = ref({
   email: ''
 })
 
-const handleSubmit = () => {
+const handleSubmit = async () => {
   loading.value = true
-  // Simular envío
-  setTimeout(() => {
-    loading.value = false
-    alert(`¡Solicitud enviada! Gracias ${form.value.nombre}, revisa tu correo ${form.value.email}.`)
+  try {
+    // Aquí es donde ocurre la magia: llamamos a TU propia API
+    const { data, error } = await useFetch('/api/contact', {
+      method: 'POST',
+      body: form.value
+    })
+    
+    // Si hubo error en la petición HTTP o error lógico en nuestra API
+    if (error.value) throw new Error(error.value.message || 'Error en el servidor')
+    if (data.value && !data.value.success) throw new Error(data.value.error || 'Error desconocido')
+
+    // Si todo salió bien:
+    success.value = true
     form.value = { nombre: '', tipo: '', whatsapp: '', email: '' }
-  }, 1500)
+  } catch (err) {
+    alert("Error al enviar: " + err.message)
+  } finally {
+    loading.value = false
+  }
 }
 </script>
 
