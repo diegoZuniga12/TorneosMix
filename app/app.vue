@@ -211,7 +211,7 @@
               </div>
 
               <button type="submit" :disabled="loading" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-xl shadow-lg transition-all transform hover:-translate-y-1 flex justify-center items-center gap-2">
-                <span>{{ loading ? 'Enviando...' : 'Recibir Demo Gratuita' }}</span>
+                <span>{{ loading ? 'Enviando...' : 'Recibir más información' }}</span>
               </button>
             </form>
           </div>
