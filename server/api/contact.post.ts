@@ -29,7 +29,7 @@ export default defineEventHandler(async (event) => {
       },
       body: JSON.stringify({
         from: 'TorneoMix <onboarding@resend.dev>',
-        to: 'torneomix@outlook.com',
+        to: 'choromosqui8@gmail.com',
         subject: `Nuevo Lead en TorneoMix: ${body.nombre}`,
         html: `
           <div style="font-family: sans-serif; padding: 20px; color: #333;">
